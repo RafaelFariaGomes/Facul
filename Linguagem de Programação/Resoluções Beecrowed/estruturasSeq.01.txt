@@ -1,0 +1,18 @@
+using System; 
+
+class URI {
+
+    static void Main(string[] args) { 
+
+    double raio = 0;
+    double pi = 3.14159;
+    double A = 0;
+    
+    raio = double.Parse(Console.ReadLine());
+    A = pi * (raio * raio);
+    
+    Console.WriteLine("A=" + A.ToString("F4"));
+
+    }
+
+}

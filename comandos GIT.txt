@@ -1,0 +1,39 @@
+Comandos GIT
+
+
+git clone: clona um repositorio, adicionar o link URL depois do comando
+Exemplo: git clone <https://link-com-o-nome-do-repositório>
+
+git Branch: serve para criar uma ramificação do projeto, assim varios devs.
+conseguem trabalhar em conjunto em um mesmo projeto.
+Exemplo: git branch <nome-da-branch> 
+PESQUISAR GIT BRANCH NA PRÁTICA
+
+git commit: comando usado para fazer um comentario dentro de uma alteração feita
+no repositorio. Usado tambem para deixar uma verificação na alteração feita.
+Exemplo:git commit -m "adição do codigo fonte"
+
+git status: dá as informações necessarias sobre a Branch atual. Exibe se está com 
+a versão mais atualizada do repositorio remoto e se precisamos fazer algum: push,
+pull ou commit.
+Codigo: git status
+
+git add: inclue no repositorio remoto oque foi criado, incluido ou alterado
+no repositorio local.
+Exemplo: git add * // seleciona todas as alterações e envia elas ao repositorio
+remoto, é preciso depois desse comando commitar e dar o push.
+
+git push: comando que usamos para enviar as alterações feitas no repositorio local
+para o repositorio remoto.
+Exemplo: git push
+
+git pull: é um comando usado para atualizar o seu repositorio local, 
+quando alguem fez alterações no remoto e subiu essas alterações ao repositorio
+remoto, assim esse comando atualiza o repositorio local.
+Exemplo: git pull
+
+git revert: coamndo usado para desfazer alterações que "deram errado".
+use o comando: git log --oneline para veriifcar os commits
+use o git revert para desfazer este commit, enviando o o codigo que aparece ao
+lado esquerdo do terminal após enviar o git log.
+Exemplo: git revert 3321844

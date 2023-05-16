@@ -1,0 +1,23 @@
+using System; 
+
+class URI {
+
+    static void Main(string[] args) { 
+
+       int numFuncionario;
+    int horas;
+    double salarioHora = 0;
+    double salarioTotal = 0;
+    
+    numFuncionario = int.Parse(Console.ReadLine());
+    horas = int.Parse(Console.ReadLine());
+    salarioHora = double.Parse(Console.ReadLine());
+    
+    salarioTotal = salarioHora * horas;
+    
+    Console.WriteLine("NUMBER = " + numFuncionario);
+    Console.WriteLine("SALARY = U$ " + salarioTotal.ToString("F2"));
+
+    }
+
+}

@@ -1,0 +1,24 @@
+using System;
+class HelloWorld {
+  static void Main() {
+     Escreva um algoritmo que cria uma matriz de 4 linhas e 5 colunas para números inteiros. 
+    Em seguida, preencha a matriz com números aleatórios. 
+    
+    int [,] matriz1 = new int [4,5];
+    Random r = new Random();
+    
+    
+    for(int i = 0; i  4; i++){
+        for(int j = 0; j  5; j++){
+            matriz1[i,j] = r.Next(0,100);
+        }
+    }
+    for(int u = 0; u  4; u++){
+        for(int k = 0; k  5; k++){
+        Console.Write(matriz1[u,k] +  );
+    }
+    Console.WriteLine();
+  }
+  
+}
+}
