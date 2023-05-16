@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: 'Patrick Hand', cursive;
+    box-sizing: border-box;
+}
+body{
+    padding: 0%;
+    margin: 0%;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: #03012c;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    position: relative;
+    color: cyan;
+    text-shadow: black 3px 3px 1px;
+    top: 60px;
+}
+.a_comecar{
+    background-color: black;
+    color: cyan;
+    text-align: center;
+    padding: 1.3%;
+    border-radius: 1.5rem;
+    text-shadow: black 5px 3px;
+    font-size: 60px;
+    text-decoration: none;
+    width: 15vw;
+    height: 10vh;
+    top: 35%;
+    left: 41.6%;
+    padding-bottom: 100px;
+}
+.container{
+    width: 90%;
+    height: 85%;
+    background-color: #b33c86;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.582);
+}
+.text_logo{
+    position: absolute;
+    font-family: 'Permanent Marker', cursive;
+    color: white;
+    font-size: 40px;
+    left: 40%;
+}
+
+/** Estilização da pagina Login **/
+.h1_login{
+    position: relative;
+    top: 10px;
+    font-size: 70px;
+    font-weight: 600;
+}
+/** ESTILIZAÇÃO DE TODOS OS BOTÕES **/
+a{
+    position: absolute;
+    top: 300px;
+    padding: 5px;
+    border-radius: 6px;
+    width: 200px;
+    background-color: cyan;
+    font-size: 2.5rem;
+    text-align: center;
+    box-shadow: 5px 5px 15px #000000a6;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    transform: scale(1.1);
+    }
+.continue{
+    position: absolute;
+    top: 70%;
+    right: 37%;
+    color: black;
+    font-size: 1.6rem;
+    background-color: aqua;
+    padding: 12px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.continue:hover{
+    transform: scale(1.2);
+}
+.login{
+    max-width: 400px;
+    min-height: 30vh;
+    max-height: 60vh;
+    padding: 2rem;
+    
+}
+.input-field{
+    position: relative;
+}
+.input-field input{
+outline: none;
+font-size: 1rem;
+padding: 5px;
+margin-top: 3rem;
+border-radius: 5px;
+width: 100%;
+}
+/** linha embaixo dos inputs **/
+.input-field .underline{
+content: '';
+position: absolute;
+height: 1px;
+width: 98%;
+bottom: -5px;
+left: 2px;
+background-color: #00000093;
+}
+h1{
+    font-size: 60px;
+}
+/** Fim da estilização da pagina de Login **/
+.img_logo{
+    position: absolute;
+    top: 0;
+    left: 57%;
+    width: 100px;
+    height: 63px;
+    background-color: #03012c;
+}
+/** Começo estilização pagina Console **/
+.gratis{
+    left: 25%;
+    padding: 30px;
+    width: 20vw;
+}
+.pago{
+    padding: 20px;
+    width: 20vw;
+    left: 55%;
+}
+
+
+/** Fim estilização pagina Console **/
+
+
+/** Estilização Plataformas **/
+.A_primeiro{
+    position: absolute;
+    width: 300px;
+    height: 60px;
+    text-decoration: none;
+    padding: 15px;
+    top: 40%;
+    left: 25%;
+    background-color: black;
+    border-radius: 15px;
+    color: aqua;
+    font-size: 40px;
+    padding-bottom: 70px;
+}
+        .A_terceiro{
+            position: absolute;
+            width: 300px;
+            height: 60px;
+            top: 40%;   
+            left: 55%;
+            text-decoration: none;
+            padding: 15px;
+            background-color: black;
+            border-radius: 15px;
+            color: aqua;
+            font-size: 40px;
+            padding-bottom: 70px;
+        }
+/** Fim da Estilização Plataformas **/
+
+
+/** Pagina Cadastro **/
+.in_cadastro_email{
+    position: relative;
+    top: 100px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 1rem;
+    padding: 5px;
+    width: 100%;
+}
+.in_cadastro_apelido{
+    position: relative;
+    top: 130px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 1rem;
+    padding: 5px;
+    width: 100%;
+}
+.in_cadastro_senha{
+    position: relative;
+    top: 160px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 1rem;
+    padding: 5px;
+    width: 100%;
+}
+.cadastro{
+    max-width: 400px;
+    min-height: 30vh;
+    max-height: 60vh;
+    padding: 2rem;
+}
+.email{
+    position: absolute;
+    height: 1px;
+    width: 83%;
+    top: 46%;
+    left: 35px;
+    background-color: #00000093;
+    }
+    .apelido{
+        position: absolute;
+        height: 1px;
+        width: 83%;
+        top: 56.5%;
+        left: 35px;
+        background-color: #00000093;
+        }
+        .senha{
+            position: absolute;
+            height: 1px;
+            width: 83%;
+            top: 67%;
+            left: 35px;
+            background-color: #00000093;
+            }
+.btn_cadastrar{
+    width: 45%;
+    height: 15%;
+    background-color: aqua;
+    padding: 3%;
+    position: absolute;
+    top: 75%;
+    left: 28%;
+    border-radius: 1.5rem;
+    font-size: 2.2rem;
+    color: black;
+    cursor: pointer;
+}
+.btn_cadastrar:hover{
+    transform: scale(1.2);
+}
+.redirecionar_login{
+    position: absolute;
+    top: 87%;
+    width: 8%;
+    font-size: 2rem;
+    height: 6%;
+    background-color: aqua;
+    padding-bottom: 0.5%;
+    border-radius: 1.5rem;
+    left: 46%;
+    color: black;
+}
+h2{
+    font-size: 1.5rem;
+    color: white;
+    position: absolute;
+    top: 82%;
+    left: 46.2%;
+}
+/** Fim da estilizção da pagina Cadastro **/
+            

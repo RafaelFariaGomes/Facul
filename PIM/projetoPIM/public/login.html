@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <span class="text_logo">The Best Game</span> <img src="./imagens/vetor_controle-removebg-preview.png" class="img_logo">
+    <div class="container login">
+        <h1 class="h1_login">Login</h1>
+        <form id="form_login">
+            <div class="input-field">
+                <input type="email" class="username" name="email" placeholder="Digite o email cadastrado">
+                <div class="underline"></div>
+            </div>
+            <div class="input-field">
+                <input type="password" class="password" name="senha" placeholder="Digite sua senha">
+                <div class="underline"></div>
+            </div>
+            <input class="continue" value="Continuar" type="button" onclick="entrar()" >
+        </form>
+    </div>
+</body>
+</html>
+<script>
+function entrar() {
+    var fd = new FormData(form_login);
+    var bodyObj = {}
+
+    fd.forEach(function (value, key) {
+        bodyObj[key] = value;
+        console.log(value, key)
+    })
+    var body = JSON.stringify(bodyObj);
+    console.log(body)
+    var formulario = new URLSearchParams(new FormData(form_login));
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        body: formulario
+    }).then(resposta => {
+
+        if (resposta.ok) {
+
+            resposta.json().then(json => {
+
+                sessionStorage.email_usuario_meuapp = json.email;
+                sessionStorage.apelido_usuario_meuapp = json.apelido;
+
+                window.location.href = 'plataforma.html';
+                console.log(resposta)
+            });
+
+        } else {
+
+            alert('Erro no login!');
+
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    });
+    return false;
+}
+</script>

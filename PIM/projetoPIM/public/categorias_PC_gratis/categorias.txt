@@ -1,0 +1,20 @@
+aventura
+cartas
+casual
+corrida
+esportes
+estrategia
+exploração
+FPS
+IND
+luta
+MMO
+MOBA
+multiplayer
+online
+plataforma
+quebra cabeça
+RPG
+simulador
+sobrevivencia
+terror

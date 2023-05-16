@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="./style_categorias.css">
+    <title>Loading</title>
+</head>
+<body>
+    <h1 style="position: absolute; left: 27%; color: #b33c86;">Carregando uma sugestão de jogo pra você...</h1>
+    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_4bHeKl.json"  background="transparent"  speed="1"  style="width: 60%; height: 60%; position: absolute; top: 35%; left: 20%;"  loop  autoplay></lottie-player>
+    <META HTTP-EQUIV="REFRESH" id="tag_meta">
+</body>
+</html>
+<script>
+    let params = new URLSearchParams(document.location.search.substring(categoria));
+    var categoria = params.get('categoria')
+    var preco = params.get('preco')
+    console.log(categoria)
+    console.log(preco)
+                                                                                                                                                    
+    tag_meta.setAttribute("CONTENT",`4; URL=categorias_PC_pago/${categoria}.html`)
+</script>

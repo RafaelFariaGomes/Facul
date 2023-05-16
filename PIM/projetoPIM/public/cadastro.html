@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <span class="text_logo">The Best Game</span> <img src="./imagens/vetor_controle-removebg-preview.png" class="img_logo">
+    <div id="div_erro"></div>
+    <form id="form_cadastro" class="container cadastro">
+        <h1 class="h1_cadastro">Cadastre-se</h1><br>
+        <input id="in_cadastro_email" type="email" class="in_cadastro_email" name="email" placeholder="Digite seu email" required><br>
+        <div class="underline cad email"></div>
+
+        <input id="in_cadastro_apelido" type="text" class="in_cadastro_apelido" name="apelido" placeholder="Digite seu apelido" required><br>
+        <div class="underline cad apelido"></div>
+
+        <input id="in_cadastro_senha" type="password" class="in_cadastro_senha" name="senha" placeholder="Digite uma senha de 8 digitos" required><br>
+        <div class="underline cad senha"></div>
+
+        <button onclick="cadastrar()" type="button" class="btn_cadastrar">Cadastrar!</button><br>
+    </form>
+    <h2>Já tem cadastro?</h2>
+    <a class="redirecionar_login" href="login.html">Login</a>
+</body>
+</html>
+<script>
+    function cadastrar() {
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            
+            if (response.ok) {
+
+                window.location.href='login.html';
+
+            } else {
+
+                alert('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+            }
+        });
+
+        return false;
+    }
+</script>
