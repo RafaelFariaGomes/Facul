@@ -1,0 +1,28 @@
+EXERCICIO 02 ALGORITMOS - CLASSROOM
+
+
+using System;
+class EX02 {
+  static void Main() {
+      double entradaS = 8;
+      double entradaC = 3;
+      
+      while(entradaC <= 6){
+          entradaC++;
+          entradaS = entradaS + 2;
+          
+      }if((entradaC + entradaS) > 20){
+          entradaS = entradaS - entradaC;
+          entradaS += 2;
+          
+          Console.WriteLine("o Resultado final de S é " + entradaS);
+      }else{
+          entradaS = entradaS + entradaC;
+          entradaS *= 2;
+          
+          Console.WriteLine("o Resultado final de S é " + entradaS);
+      }
+  
+      Console.ReadKey();
+  }
+}
