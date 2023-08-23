@@ -1,0 +1,26 @@
+Vetores
+
+Declarar um Vetor (Array):
+
+"tipoDoVetor" [] "nomeDoVetor" = new "tipoDoVetor" ["tamanhoDoVetor"]
+EXEMPLO: int [] vetor1 = new int [10];
+__________________________________________________________________________________________________________________________
+
+o Codigo abaixo, acha o menor valor de um Vetor chamado V.
+
+int menor = 0;
+for(int i = 0; i < 10; i++){
+	if(V[i] < menor){
+	menor = V[i];
+	}
+}
+
+o codigo acima, tem um "erro" que não apontaria no codigo, pois caso o menor valor fosse maior do que 0, ele rodaria, mas não
+da forma correta. Solução: colocar na declaração de "menor" o valor inicial do vetor.
+__________________________________________________________________________________________________________________________
+
+LENGH
+
+ .lengh serve para puxar o tamanho do Vetor.
+
+__________________________________________________________________________________________________________________________

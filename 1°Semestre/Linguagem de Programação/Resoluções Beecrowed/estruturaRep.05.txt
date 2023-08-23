@@ -1,0 +1,18 @@
+using System; 
+
+class URI {
+
+    static void Main(string[] args) { 
+
+        int N = 0;
+        int dividido = 0;
+        
+        N = int.Parse(Console.ReadLine());
+        for(int i = N; i > 0; i--){
+            if(N % i == 0){
+                dividido = N / i;
+                Console.WriteLine(dividido);
+            }
+        }
+    }
+}

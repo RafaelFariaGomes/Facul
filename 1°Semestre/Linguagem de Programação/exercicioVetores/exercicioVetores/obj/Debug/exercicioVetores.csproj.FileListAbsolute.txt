@@ -1,0 +1,8 @@
+C:\Users\Rafa\Documents\Faculdade\Linguagem de Programação\exercicioVetores\exercicioVetores\bin\Debug\exercicioVetores.exe.config
+C:\Users\Rafa\Documents\Faculdade\Linguagem de Programação\exercicioVetores\exercicioVetores\bin\Debug\exercicioVetores.exe
+C:\Users\Rafa\Documents\Faculdade\Linguagem de Programação\exercicioVetores\exercicioVetores\bin\Debug\exercicioVetores.pdb
+C:\Users\Rafa\Documents\Faculdade\Linguagem de Programação\exercicioVetores\exercicioVetores\obj\Debug\exercicioVetores.csproj.AssemblyReference.cache
+C:\Users\Rafa\Documents\Faculdade\Linguagem de Programação\exercicioVetores\exercicioVetores\obj\Debug\exercicioVetores.csproj.SuggestedBindingRedirects.cache
+C:\Users\Rafa\Documents\Faculdade\Linguagem de Programação\exercicioVetores\exercicioVetores\obj\Debug\exercicioVetores.csproj.CoreCompileInputs.cache
+C:\Users\Rafa\Documents\Faculdade\Linguagem de Programação\exercicioVetores\exercicioVetores\obj\Debug\exercicioVetores.exe
+C:\Users\Rafa\Documents\Faculdade\Linguagem de Programação\exercicioVetores\exercicioVetores\obj\Debug\exercicioVetores.pdb

@@ -1,0 +1,4 @@
+Camada de enlace
+endereçamento IPV6 e IPV4
+	edereçamento IPV6 - 16 bits = 1 hexteto, 32 = 2 hexteto, 64 = 4 hextetos e assim por diante
+
