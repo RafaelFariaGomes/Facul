@@ -1,0 +1,143 @@
+const closeModal = () => {
+  reenableDontpad();
+  document.querySelector('.modal')?.remove();
+  document.querySelector('background-overlay')?.remove();
+}
+
+const modal = (titleText, bodyText, buttons) => {
+  const result = document.createElement('div');
+  result.className = 'modal';
+
+  const title = document.createElement('h2');
+  title.textContent = titleText;
+
+  const body = document.createElement('div');
+
+  body.className = 'modal-body';
+  const bodyP = document.createElement('p');
+  bodyP.innerHTML = bodyText;
+  body.appendChild(bodyP);
+
+  const footer = document.createElement('div');
+  footer.className = 'modal-footer';
+
+  buttons.forEach(button => footer.appendChild(button));
+  result.append(title, body, footer);
+
+  return result;
+}
+
+const button = (text) => {
+  const result = document.createElement('button');
+  result.textContent = text;
+  result.className = 'btn';
+
+  return result;
+}
+
+const adsRemovedModal = () => {
+  const btn = button('Cool');
+  btn.addEventListener('click', (_ev) => closeModal());
+
+  const result = modal('Thank you for choosing Dontpad Plus!', `You have successfully removed ads from this page.<br>
+  As a token of our appreciation, we are giving you the first month of Dontpad Plus for free!`, [btn]);
+
+  const modalFooter = result.querySelector('.modal-footer');
+  modalFooter.classList.add('smaller-footer');
+
+  return result;
+}
+
+const renderAdsRemovedModal = () => {
+  document.body.appendChild(adsRemovedModal());
+}
+
+const spinner = () => {
+  const result = document.createElement('dontpad-spinner');
+  return result;
+}
+
+const buyModal = () => {
+  const fullPagePath = parsePathName();
+	const rootPage = fullPagePath.split('/')[1];
+
+  const closeBtn = button('Keep Ads');
+  closeBtn.classList.add('btn-keep');
+  closeBtn.addEventListener('click', (_ev) => closeModal());
+
+  const buyBtn = button('Buy Dontpad Plus');
+  buyBtn.appendChild(spinner());
+  const result = modal('Dontpad Plus', `Remove all ads from this page:<br>dontpad.com/<b>${rootPage}</b><br> and all its subpages
+  for only $0,69 a month (paid annually)`, [closeBtn, buyBtn]);
+
+  buyBtn.addEventListener('click', (_ev) => {
+    buyBtn.disabled = true;
+    removeAds(rootPage, (_timestamp) => {
+      buyBtn.removeAttribute('disabled');
+      dontpad.lastModified = 0;
+      result.remove();
+      renderAdsRemovedModal();
+    }, (_err) => {
+      alert('There was an error processing your request, please try again later.');
+      // TODO: Improve error handling
+      buyBtn.removeAttribute('disabled');
+    });
+  });
+
+  return result;
+}
+
+const renderBuyModal = () => {
+  const overlay = document.createElement('background-overlay');
+	document.body.appendChild(overlay);
+
+  overlay.appendChild(buyModal());
+  disableDontpad();
+}
+
+const removeAndRenderBuyModal = () => {
+  closeModal();
+  renderBuyModal();
+}
+
+const overrideModal = () => {
+  const discardBtn = button('Discard my changes');
+  discardBtn.appendChild(spinner());
+  discardBtn.classList.add('btn-keep');
+
+  const overrideBtn = button('Override other changes and save mine');
+  overrideBtn.appendChild(spinner());
+
+  const result = modal('Alert', 'This page was changed on a different browser tab while you were typing', [discardBtn, overrideBtn]);
+
+  discardBtn.addEventListener('click', (_ev) => {
+    dontpad.isDiscardingChanges = true;
+    location.reload();
+  });
+
+  overrideBtn.addEventListener('click', (_ev) => {
+    closeModal();
+
+    dontpad.forceOverride = true;
+
+    dontpad.actionRunning = null;
+  });
+
+  return result;
+}
+
+const renderOverrideModal = () => {
+  dontpad.actionRunning = 'OVERRIDE_MODAL';
+
+  const overlay = document.createElement('background-overlay');
+	document.body.appendChild(overlay);
+
+  overlay.appendChild(overrideModal());
+  disableDontpad();
+}
+
+window.addEventListener('keydown', (ev) => {
+  if (ev.key === 'ç' && ev.shiftKey && ev.ctrlKey) {
+    removeAndRenderBuyModal();
+  }
+});

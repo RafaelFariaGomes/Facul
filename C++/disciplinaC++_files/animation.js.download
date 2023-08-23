@@ -1,0 +1,117 @@
+let isAnimating = false;
+let retryAnimationRunning = false;
+const ANIMATION_TYPE = { RETRY: 0, UPDATE: 1, SAVE: 2 };
+
+const saveAnimation = (body, svg, text) => {
+  isAnimating = true;
+  body.style.animation = 'apear 2s ease-in-out forwards';
+  svg.style.backgroundImage = 'url(/assets/DpSavingIcon.svg)';
+  body.classList.add('save');
+  body.style.width = 'auto';
+  text.textContent = 'Saving...';
+  text.style.display = 'block';
+
+  const interval = setInterval(() => {
+    if (!dontpad.isDirty()) {
+      setTimeout(() => {
+        body.style.opacity = 1;
+        svg.style.backgroundImage = 'url(/assets/DpSavedIcon.svg)';
+        text.style.width = '54.48px';
+        text.textContent = 'Saved';
+      }, 3000);
+
+      setTimeout(() => {
+        text.style.animation = 'shrinkFromSave 2s ease-in-out forwards';
+      }, 5000);
+
+      setTimeout(() => {
+        body.style.animation = 'disapear 2s ease-in-out forwards';
+        text.style.display = 'none';
+      }, 8000);
+
+      setTimeout(() => {
+        body.classList.remove('save');
+        body.removeAttribute('style');
+        text.removeAttribute('style');
+        svg.removeAttribute('style');
+        isAnimating = false;
+      }, 10000);
+
+      clearInterval(interval);
+    }
+  }, 500);
+}
+
+const saveRecoveryAnimation = (body, svg, text) => {
+  // TODO: transition happening too fast, saved not appearing
+  isAnimating = true;
+  retryAnimationRunning = false;
+  body.style.opacity = 1;
+  body.classList.replace('attention', 'save');
+  text.style.animation = 'shrinkAttention .8s ease-out forwards';
+  body.style.animation = 'warningToSave 1s ease-in-out forwards';
+  svg.removeAttribute('style');
+  svg.style.backgroundImage = 'url(/assets/DpSavedIcon.svg)';
+  text.textContent = 'Saved';
+
+  setTimeout(() => {
+    body.classList.replace('attention', 'save');
+    text.style.animation = 'shrinkFromSaveSmall 2s ease-in-out forwards';
+  }, 4000);
+
+  setTimeout(() => {
+    body.style.animation = 'disapear 2s ease-in-out forwards';
+    text.style.display = 'none';
+  }, 6000);
+
+  setTimeout(() => {
+    body.classList.remove('attention', 'save');
+    body.removeAttribute('style');
+    text.removeAttribute('style');
+    svg.removeAttribute('style');
+    isAnimating = false;
+  }, 8000);
+}
+
+const removeRecoveryAnimation = (body, svg, text) => {
+  body.style.animation = 'disapear 2s ease-in-out forwards';
+
+  setTimeout(() => {
+  retryAnimationRunning = false;
+  body.classList.remove('attention', 'save');
+  body.removeAttribute('style');
+  text.removeAttribute('style');
+  svg.removeAttribute('style');
+  isAnimating = false;
+  }, 2000);
+}
+
+const retryAnimation = (body, text) => {
+  isAnimating = true;
+  retryAnimationRunning = true;
+
+  body.classList.add('attention');
+  text.textContent = 'Disconnected. Trying to connect...';
+}
+
+const handleAnimation = (type) => {
+  const body = document.querySelector('.status-body');
+  const svg = document.querySelector('.status-svg');
+  const text = document.querySelector('.status-text');
+
+  switch (type) {
+    case ANIMATION_TYPE.RETRY:
+      if (!isAnimating) retryAnimation(body, text);
+      break;
+    case ANIMATION_TYPE.UPDATE:
+      if (retryAnimationRunning) removeRecoveryAnimation(body, svg, text);
+      break;
+    case ANIMATION_TYPE.SAVE:
+      if (!isAnimating) {
+        saveAnimation(body, svg, text);
+      } else if (retryAnimationRunning) {
+        saveRecoveryAnimation(body, svg, text);
+      }  
+      break;
+  }
+}

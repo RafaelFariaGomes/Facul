@@ -1,0 +1,103 @@
+const footerAd = () => {
+  const result = document.createElement('div');
+  result.className = 'dontpad-free footer-div';
+  // TODO: do not user innerHTML
+  result.innerHTML = `
+  <div class="ad-btns-menu-footer">
+			<button class="btn-open-modal" onclick="removeAndRenderBuyModal()">Remove All Ads</button>
+		</div>
+
+		<div class="footer-content">
+      <!-- FooterResponsive -->
+      <ins class="adsbygoogle footer-ad"
+        style="display:block"
+        data-ad-client="ca-pub-2087915935349742"
+        data-ad-slot="5701473496">
+      </ins>
+		</div>
+  </div>
+  `;
+
+  return result;
+}
+
+const leftAd = () => {
+  const result = document.createElement('div');
+  result.className = 'dontpad-free left-menu-div';
+  // TODO: do not user innerHTML
+  result.innerHTML = `
+  <button class="btn-menu" onclick="removeAndRenderBuyModal()"> Remove All Ads </button>
+
+  <!-- LeftResponsive -->
+  <div class="ad-div-left">
+    <ins class="adsbygoogle left-ad"
+      style="display:block"
+      data-ad-client="ca-pub-2087915935349742"
+      data-ad-slot="7753207178">
+    </ins>
+  </div>
+  `;
+
+  return result;
+}
+
+const rightAd = () => {
+  const result = document.createElement('div');
+  result.className = 'dontpad-free ad-div-right';
+  // TODO: do not user innerHTML
+  result.innerHTML = `
+    <button class="btn-menu" onclick="removeAndRenderBuyModal()"> Remove All Ads </button>
+
+    <!-- RightResponsive -->
+      <ins class="adsbygoogle right-ad"
+        style="display:block"
+        data-ad-client="ca-pub-2087915935349742"
+        data-ad-slot="6236390615">
+      </ins>
+  `;
+
+  return result;
+}
+
+const renderAd = (containerSelector, adElement) => {
+  const container = document.querySelector(containerSelector);
+  container.appendChild(adElement);
+  adsbygoogle.push({});
+}
+
+const displayLeftMenuAd = () => renderAd('#menu-div', leftAd());
+const displayRightMenuAd = () => renderAd('.dp-usable', rightAd());
+const displayFooterAd = () => renderAd('.dp-right-side', footerAd());
+
+const removeAdsHTMLElements = () => {
+  // TODO: Will have more ads later on
+  const ads = document.querySelectorAll('.dontpad-free');
+  Array.from(ads).forEach(ad => ad.remove());
+}
+
+const displayAds = () => {
+  removeAdsHTMLElements();
+
+  adsbygoogle = window.adsbygoogle || [];
+
+  if (dontpad.links.length) {
+    displayLeftMenuAd();
+  }
+
+  displayRightMenuAd();
+  displayFooterAd();
+  positionAbsoluteElements();
+}
+
+const loadAdsenseIfNecessary = () => {
+  if (!document.getElementById('adsense')) loadAsyncScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2087915935349742', 'adsense', 'anonymous');
+}
+
+const handleAds = (showAds) => {
+  if (showAds) {
+    loadAdsenseIfNecessary();
+    displayAds();
+  } else {
+    removeAdsHTMLElements();
+  }
+}

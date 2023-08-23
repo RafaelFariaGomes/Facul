@@ -1,0 +1,52 @@
+const positionAbsoluteElements = () => {
+  const rightDiv = document.querySelector('.ad-div-right');
+  const statusBody = document.querySelector('.status-body');
+
+  if (rightDiv) {
+    statusBody.style.right = rightDiv.clientWidth + 32 + 'px';
+  } else return;
+
+  const removeAdBtn = document.querySelector('.ad-btns-menu-footer');
+  
+  if (removeAdBtn) {
+    removeAdBtn.style.marginRight = rightDiv.clientWidth + 'px';
+  };
+};
+
+const handleItemsOverflow = () => {
+  const menu = document.querySelector('#menu');
+  Array.from(menu.children).forEach(item => {
+    const text = item.querySelector('a');
+    if (text.offsetWidth < text.scrollWidth) {
+      if (text.classList.contains('ellipsed')) {
+        return; //tirar isso
+      }
+      text.classList.add('ellipsed');
+
+      text.addEventListener('mouseenter', ev => {
+        const overflowedContent = document.createElement('p');
+        overflowedContent.className = 'overflowed-content';
+        overflowedContent.style.marginTop = (-21 - menu.scrollTop) + 'px';
+        overflowedContent.textContent = text.textContent;
+        text.appendChild(overflowedContent);
+        menu.addEventListener('scroll', ev => {
+          overflowedContent.remove();
+        })
+        text.addEventListener('mouseleave', ev => {
+          overflowedContent.remove();
+        })
+      })
+    }
+  });
+}
+
+const loadAsyncScript = (src, id, crossorigin) => {
+  const newScript = document.createElement('script');
+  newScript.id = id;
+  newScript.type = 'text/javascript';
+  newScript.async = true;
+  newScript.src = src;
+  if (crossorigin) newScript.crossOrigin = crossorigin;
+  const script = document.getElementsByTagName('script')[0];
+  script.parentNode.insertBefore(newScript, script);
+}

@@ -1,0 +1,39 @@
+// const backendUrl2 = 'http://localhost:8080/';
+const backendUrl2 = 'https://api.dontpad.com/';
+
+const handleRequest = (url, options, onSuccess, onFailure) => {
+  return fetch(url, options)
+    .then(async (body) => {
+      const res = await body.json();
+      if (body.ok) {
+        if (onSuccess)
+          onSuccess(res);
+        else {
+          return res;
+        };
+      } else
+        onFailure(res);
+    }).catch((res) => onFailure(res));
+}
+
+const post = (endpoint, body, onSuccess, onFailure) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  }
+  if (body) {
+    options.body = JSON.stringify(body);
+  }
+
+  return handleRequest(backendUrl2 + endpoint, options, onSuccess, onFailure);
+}
+
+const get = (endpoint, onSuccess, onFailure) => {
+  const options = { };
+  return handleRequest(backendUrl2 + endpoint, options, onSuccess, onFailure);
+}
+
+const removeAds = (rootPagePath, onSuccess, onFailure) => post('remove-ads', { 'root-page-path': rootPagePath }, onSuccess, onFailure);

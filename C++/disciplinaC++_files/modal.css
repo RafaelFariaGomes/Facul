@@ -1,0 +1,108 @@
+.modal {
+  --modal-width: 30rem;
+  width: var(--modal-width);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 4px 7px 0px rgba(0, 0, 0, 0.2);
+  top: 40%;
+  left: calc(50% - (var(--modal-width) / 2));
+  position: absolute;
+  border-radius: 5px;
+  font-family: Arial;
+  padding: 1.5rem;
+}
+
+.modal h2 {
+  margin-bottom: 1.1rem;
+}
+
+.modal p {
+  margin: 0;
+}
+
+.modal-body {
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.modal-footer {
+  text-align: center;
+  margin-top: 1.1rem;
+  display: flex;
+  justify-content: end;
+}
+
+.smaller-footer {
+  margin-top: 1rem;
+}
+
+.modal .btn {
+  color: #fff;
+  background-color: #333;
+  border-radius: 3px;
+  margin-left: 8px;
+  border: 0px;
+  font-size:1rem;
+  padding: 0.63rem;
+  cursor: pointer;
+  min-width: 90px;
+  position: relative;
+}
+
+.modal .btn:hover {
+  color: #eee;
+  background-color: #222;
+}
+
+.modal .btn:active {
+  color: #fff;
+  background-color: #000;
+}
+
+.modal .btn:disabled {
+  color: #fff3;
+  background-color: #333;
+}
+
+.modal .btn-keep:hover {
+  color: #000;
+  background-color: #22222208;
+}
+
+.modal .btn-keep:active {
+  color: #000;
+  background-color: #0000000c;
+}
+
+.modal .btn-keep {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.modal button dontpad-spinner {
+  opacity: 0;
+  animation: spinner 2s linear infinite;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-top-color: #bababa;
+  box-sizing: border-box;
+  height: 20px;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  z-index: 2;
+}
+
+.modal button:disabled dontpad-spinner {
+  opacity: 1;
+}

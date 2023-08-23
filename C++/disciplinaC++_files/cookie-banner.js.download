@@ -1,0 +1,15 @@
+const value = document.cookie.replace(
+  /(?:(?:^|.*;\s*)policies-accepted\s*\=\s*([^;]*).*$)|^.*$/,
+  "$1"
+);
+
+const banner = document.querySelector('.cookie-body');
+
+if (value !== 'true') banner.style.display = 'flex';
+
+const btn = banner.querySelector('.cookie-button');
+btn.addEventListener('click', (_ev) => {
+  banner.style.display = 'none';
+  document.cookie = 'policies-accepted=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
+  dontpad.showAdsIfReady();
+});
